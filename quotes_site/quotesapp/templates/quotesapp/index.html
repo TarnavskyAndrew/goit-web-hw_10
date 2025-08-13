@@ -1,0 +1,43 @@
+{% extends "quotesapp/base.html" %}
+
+{% block sidebar %}
+  <div class="sidebar">
+    <h6>Top Ten Tags</h6>
+    {% for t in top_tags %}
+      <a class="tag" href="{% url 'quotes:tag_quotes' t.name %}">#{{ t.name }}</a>
+    {% empty %}
+      <p>No tags yet</p>
+    {% endfor %}
+  </div>
+{% endblock %}
+
+{% block content %}
+  <h1>Quotes</h1>
+
+  {% for q in page_obj.object_list %}
+    <article class="quote">
+      <div class="quote-text">{{ q.text }}</div>
+      <div class="quote-author">
+        — <a href="{% url 'quotes:author_detail' q.author.id %}">{{ q.author.fullname }}</a>
+        <span>(about)</span>
+      </div>
+      <div class="tags">
+        {% for t in q.tags.all %}
+          <a class="tag" href="{% url 'quotes:tag_quotes' t.name %}">{{ t.name }}</a>
+        {% endfor %}
+      </div>
+    </article>
+  {% empty %}
+    <p>No quotes yet</p>
+  {% endfor %}
+
+  <div class="pagination">
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">« Previous</a>
+    {% endif %}
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}">Next »</a>
+    {% endif %}
+  </div>
+{% endblock %}

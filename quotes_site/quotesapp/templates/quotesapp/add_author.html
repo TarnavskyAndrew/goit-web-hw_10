@@ -1,0 +1,28 @@
+{% extends "quotesapp/base.html" %}
+
+{% block content %}
+  <h1>Add author</h1>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <label for="{{ form.fullname.id_for_label }}">Full name:</label>
+    {{ form.fullname.errors }}
+    {{ form.fullname }}
+
+    <label for="{{ form.born_date.id_for_label }}">Born date:</label>
+    {{ form.born_date.errors }}
+    {{ form.born_date }}
+
+    <label for="{{ form.born_location.id_for_label }}">Born location:</label>
+    {{ form.born_location.errors }}
+    {{ form.born_location }}
+
+    <label for="{{ form.description.id_for_label }}">Description:</label>
+    {{ form.description.errors }}
+    {{ form.description }}
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

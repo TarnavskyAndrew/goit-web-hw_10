@@ -1,0 +1,526 @@
+/* --- Загальні налаштування --- */
+body {
+  max-width: 1100px;              /* ширина сторінки */
+  margin: 2rem auto;              /* центруємо body з відступом зверху та знизу */
+  padding: 0 1.5rem;              /* відступи ліворуч і праворуч, щоб текст не прилипав до країв */
+  background: #f9fbff;            /* світло-блакитний фон*/
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* шрифт */
+  color: #212529;                 /* темно-сірий колір тексту */
+}
+
+/* --- Навігаційна панель зверху --- */
+.topnav {
+  display: flex;                 /* Горизонтальне розташування елементів меню */
+  justify-content: space-between; /*  Максимально розділяємо меню зліва та праворуч */
+  align-items: center;           /* Вертикальне вирівнювання по центру */
+  margin-bottom: 2rem;           /* Відступ знизу для відокремлення від основного контенту */
+  padding-bottom: 1rem;          /* Додатковий внутрішній відступ знизу */
+  border-bottom: 1px solid #e3e6eb; /* Тонка сіра лінія знизу для візуального поділу */
+  font-size: 1rem;               /* Розмір шрифту навігації */
+}
+
+/* --- Стилі для списків усередині навігації --- */
+.topnav ul {
+  display: flex;                 /*  Горизонтальне розташування пунктів меню */
+  gap: 1.5rem;                  /* Відстань між пунктами меню */
+  list-style: none;             /* Забираємо маркери списку */
+  padding: 0;                   /* Забираємо внутрішні відступи*/
+  margin: 0;                    /* Забираємо зовнішні відступи */
+}
+
+/* --- Стилі посилань у навігації --- */
+.topnav a {
+  color: #4a69ef;               /* Синій колір тексту посилань */
+  font-weight: 600;             /* Жирність для кращого читання */
+  text-decoration: none;        /* Забираємо підкреслення за умовчанням */
+  transition: color 0.3s ease;  /* Плавна зміна кольору при наведенні */
+}
+
+/* --- При наведенні на посилання змінюємо колір і додаємо підкреслення --- */
+.topnav a:hover {
+  color: #2a3baf;
+  text-decoration: underline;
+}
+
+/* --- Основний контейнер з двома колонками: контент та сайдбар --- */
+.layout {
+  display: grid;                         /* Використовуємо grid для зручного поділу */
+  grid-template-columns: 3fr 1fr;       /* Ліва колонка в 3 рази ширша за праву */
+  gap: 2.5rem;                          /* Відступ між колонками */
+}
+
+/* --- Адаптив для маленьких екранів: одна колонка --- */
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2.5rem;
+}
+
+.layout.single-column {
+  grid-template-columns: 1fr; /* лише одна колонка */
+}
+
+/* --- Основний контент --- */
+.content {
+  max-width: 1000px;                     /* Максимальна ширина тексту для зручного читання */
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* --- Сайдбар с тегами --- */
+.sidebar {
+  background: transparent !important;  /* Забираємо фон, якщо десь заданий */
+  border: none !important;             /* Забираємо рамки */
+  box-shadow: none !important;         /* Забираємо тіні */
+  padding: 0 !important;                /* Забираємо внутрішні відступи */
+  position: sticky;                    /* Фіксуємо сайдбар при прокручуванні */
+  top: 1rem;                          /* Відступ зверху для залипання */
+  margin-top: 0.75rem;                      /* Відступ зверху */
+  display: block; /* або не вказувати display, щоб блоки йшли вертикально */
+}
+
+/* --- Заголовок в сайдбарі --- */
+.sidebar h6 {
+  margin-top: 0;  /* Відступ */
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #212529;
+  padding-left: 50px; /* Зсуває заголовок вправо */
+}
+
+/* --- Стилі тегів у сайдбарі --- */
+.sidebar .tag {
+  display: block;             /* Кожен тег - на окремому рядку */
+  /* display: inline-block; */ 
+  margin-left: 53px;          /* Зсуває теги вправо */
+  margin-bottom: 7px;         /* Відступ між тегами */
+  padding: 6px 12px;           /* Відступи всередині тегів */
+  background-color: #4a69ef; /* Яскраво-синій фон */
+  color: white;              /* Білий текст */
+  border-radius: 12px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  width: fit-content;          /* Ширина за вмістом*/
+  transition: background-color 0.3s ease;
+
+}
+
+/* --- При наведенні на тег змінюємо фон --- */
+.sidebar .tag:hover {
+  background-color: #3949ab;
+}
+
+/* --- Стилі для блоку з цитатою --- */
+.quote {
+  background: #fff;                   /* Білий фон для картки цитати */
+  border-radius: 12px;               /* Круглі краї */
+  box-shadow: 0 4px 12px rgba(42, 61, 79, 0.1);  /* М'яка тінь для об'єму */
+  padding: 1rem 1.5rem;              /* Відступи всередині картки */
+  margin-bottom: 2rem;               /* Відступ знизу між картками */
+  border: none;                     /* Без рамки */
+  position: relative;
+}
+
+/* --- Текст цитати --- */
+.quote-text {
+  font-style: italic;                /* Курсив для виділення */
+  font-size: 1.15rem;
+  color: #343a40;
+  margin-bottom: 0.7rem;
+}
+
+/* --- Автор цитати --- */
+.quote-author {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #4a69ef;
+}
+
+/* --- Посилання на автора --- */
+.quote-author a {
+  color: #4a69ef;
+  text-decoration: none;
+  display: inline-block;   /* Перетворює посилання на блоковий елемент по ширині тексту */
+  margin-bottom: 15px; /* Додаємо відступ знизу */  
+}
+
+/* --- При наведенні підкреслюємо посилання --- */
+.quote-author a:hover {
+  text-decoration: underline;
+}
+
+/* --- Додатковий текст поряд з автором (наприклад, "about") --- */
+.quote-author span {
+  color: #868e96;
+  font-weight: normal;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* --- Пагінація --- */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4a69ef;
+}
+
+/* --- Посилання пагінації --- */
+.pagination a {
+  color: #4a69ef;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease;
+}
+
+/* --- При наведенні на посилання пагінації змінюється фон і колір --- */
+.pagination a:hover {
+  background-color: #3949ab;
+  color: white;
+  border-color: #3949ab;
+}
+
+/* --- Поточний номер сторінки --- */
+.pagination span {
+  color: #555;
+}
+
+/* --- Посилання "назад" для деталей автора --- */
+.backlink {
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #4a69ef;
+  font-weight: 600;
+}
+
+.backlink:hover {
+  text-decoration: underline;
+}
+
+/* --- Блок з деталями автора --- */
+.author-detail-container {
+  max-width: 1500px;                /* Максимальна ширина блоку */
+  margin-bottom: 2rem;
+  padding: 2.5rem 3rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(42, 61, 79, 0.1);
+  line-height: 1.6;
+  font-size: 1.15rem;
+  color: #2c3e50;
+  white-space: pre-wrap;           /* Перенесення рядків та збереження пробілів */
+}
+
+/* --- Теги всередині деталей автора --- */
+.author-detail-container .tags {
+  margin-top: 1rem;
+  display: flex;          /* Включаємо flex для зручного розташування */
+  flex-wrap: wrap;        /* Перенесення тегів на новий рядок за потреби */
+  gap: 8px 6px;           /* Горизонтальний та вертикальний відступ між тегами */
+}
+
+/* --- Заголовок автора --- */
+.author-detail-container h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #212529;
+}
+
+/* --- Виділення тексту всередині автора --- */
+.author-detail-container strong {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #212529;
+}
+
+/* --- Посилання в деталях автора --- */
+.author-about-link {
+  color: #4a69ef;
+  font-weight: 600;
+  margin-left: 0.3rem;
+  text-decoration: none;
+}
+
+.author-about-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Теги всередині блоку автор --- */
+.author-detail-container .tag {
+  background-color: #4a69ef;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: inline-block;  /* Щоб margin працював коректно */
+}
+
+.author-detail-container .tag:hover {
+  background-color: #3949ab;
+}
+
+/* --- Теги всередині цитати --- */
+.quote .tags .tag {
+  background-color: #6c8eef;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-right: 0.4rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.quote .tags .tag:hover {
+  background-color: #4a69ef;
+}
+
+
+/* --- ФОРМИ додавання --- */
+form {
+  max-width: 900px;   /* збільшили ширину форми */
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem 2.5rem; /* внутрішні відступи */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(42, 61, 79, 0.1);
+  font-size: 1rem;
+  color: #212529;
+}
+
+form textarea {
+  width: 100%;         /* зайняти всю ширину контейнера */
+  min-height: 200px;   /* збільшити мінімальну висоту */
+  font-size: 1.1rem;   /* трохи більший текст */
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  resize: vertical;    /* щоб можна було розтягувати вертикально */
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+
+form select,
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+form textarea:focus,
+form select:focus,
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+  outline: none;
+  border-color: #4a69ef;
+  box-shadow: 0 0 4px #4a69ef;
+}
+
+/* --- Кнопка reset i submit  --- */
+
+button[type="submit"],
+button[type="reset"] {
+  background-color: #4a69ef;
+  color: white;
+  font-weight: 700;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button[type="reset"]:hover {
+  background-color: #3949ab;
+}
+
+
+/* Помилки форми */
+.errorlist {
+  color: #d9534f;
+  margin-top: -0.8rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  padding-left: 0;
+  font-weight: 600;
+}
+
+/* Підписи до інпутів та кнопок */
+.form-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+
+/* Аватар */
+.nav-avatar {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 0.6rem; /* Відступ праворуч */ 
+  margin-left: 0.5rem; /* Відступ зліва для зсуву */
+  object-fit: cover; /* Щоб красиво обрізати */
+}
+
+.nav-user {
+  display: flex;
+  align-items: center; /* Вирівнювання по вертикалі */
+  margin-right: 0.5rem; /* Відступ праворуч */ 
+  /* gap: 0.5rem; Відступ між аватаркою та ім'ям */
+}
+
+.topnav ul {
+  display: flex;
+  align-items: center; /* Вертикальне вирівнювання */
+  gap: 0.9rem; /* Відстань між пунктами */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Профайл */
+
+.profile-form-container {
+  max-width: 480px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-form-container h1 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #212529;
+  text-align: center;
+}
+
+.profile-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #343a40;
+}
+
+.profile-form .form-group {
+  margin-bottom: 1.2rem;
+}
+
+.profile-form input[type="file"] {
+  border: 1px solid #ced4da;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-form button[type="submit"] {
+  width: 100%;
+  background-color: #4a69ef;
+  color: white;
+  border: none;
+  padding: 0.8rem 0;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-form button[type="submit"]:hover {
+  background-color: #3949ab;
+}
+
+.profile-form .errorlist {
+  color: #dc3545;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+
+input[type="file"] {
+  display: none; /* Ховаємо стандартний input */
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  border-radius: 12px;
+  background-color: #4a69ef;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.custom-file-upload:hover {
+  background-color: #3949ab;
+}
+
+
+label.custom-file-upload { 
+display: inline-block; 
+padding: 0.6rem 1.2rem; 
+cursor: pointer; 
+border-radius: 12px; 
+background-color: #4a69ef; 
+color: white; 
+font-weight: 700; 
+font-size: 1rem; 
+transition: background-color 0.3s ease; 
+user-select: none; 
+margin-top: 0.5 rem; /* Відступ опускає кнопку вниз */
+}
+
+.custom-file-upload:hover { 
+background-color: #3949ab;
+}
+
+/* Зробити блок з кнопкою та підписом більш акуратним */
+.form-group { 
+margin-bottom: 1.5 rem; /* Відступ знизу біля блоку */ 
+display: flex; 
+flex-direction: column; 
+align-items: flex-start; /* Вирівнюємо вміст по лівому краю */
+}

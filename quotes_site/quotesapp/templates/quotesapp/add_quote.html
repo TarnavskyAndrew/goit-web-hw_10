@@ -1,0 +1,25 @@
+{% extends "quotesapp/base.html" %}
+
+{% block content %}
+  <h1>Add quote</h1>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <label for="{{ form.text.id_for_label }}">Text:</label>
+    {{ form.text.errors }}
+    {{ form.text }}
+
+    <label for="{{ form.author.id_for_label }}">Author:</label>
+    {{ form.author.errors }}
+    {{ form.author }}
+
+    <label for="{{ form.tags_csv.id_for_label }}">Tags csv:</label>
+    {{ form.tags_csv.errors }}
+    {{ form.tags_csv }}
+    <div class="form-text">Separated by commas: tag1, tag2, ...</div>
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

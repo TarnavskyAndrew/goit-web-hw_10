@@ -1,0 +1,11 @@
+{% extends "quotesapp/base.html" %}
+
+{% block content %}
+  <a class="backlink" href="javascript:history.back()">← Back</a>
+
+  <div class="author-detail-container">
+    <h2>{{ author.fullname }}</h2>
+    <p><strong>Born:</strong> {{ author.born_date }} in {{ author.born_location }}</p>
+    <p>{{ author.description }}</p>
+  </div>
+{% endblock %}

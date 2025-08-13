@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quotes to Scrape</title>
+  
+  <link rel="stylesheet" href="{% static 'quotesapp/style.css' %}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <main class="container">
+    <nav class="topnav">
+      <ul>
+        <li><a href="{% url 'quotes:index' %}">All quotes</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'quotes:add_quote' %}">Add quote</a></li>
+          <li><a href="{% url 'quotes:add_author' %}">Add author</a></li>
+        {% endif %}
+      </ul>
+        <ul>
+          {% if user.is_authenticated %}
+            <li>
+              <div class="nav-user">
+                {% if user.profile.avatar %}
+                  <img src="{{ user.profile.avatar.url }}" alt="Avatar" class="nav-avatar" />
+                {% else %}
+                  <img src="{% static 'quotesapp/default_avatar.jpg' %}" alt="No avatar" class="nav-avatar" />
+                {% endif %}
+                <span>Hi, <b>{{ user.username }}</b></span>  <!-- span вместо li -->
+              </div>
+            </li>
+            <li><a href="{% url 'users:profile_edit' %}">Edit profile</a></li>
+            <li><a href="{% url 'users:logout' %}">Logout</a></li>
+          {% else %}
+            <li><a href="{% url 'users:signup' %}">Sign up</a></li>
+            <li><a href="{% url 'users:login' %}">Login</a></li>
+          {% endif %}
+        </ul>
+    </nav>
+    
+    <div class="layout {% if hide_sidebar %}single-column{% endif %}">
+      <section class="content">
+        {% block content %}{% endblock %}
+      </section>
+
+      {% if not hide_sidebar %}
+      <aside class="sidebar">
+        {% block sidebar %}{% endblock %}
+      </aside>
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>

@@ -359,7 +359,7 @@ button[type="reset"] {
   font-size: 1.1rem;
   transition: background-color 0.3s ease;
 }
-
+ 
 button[type="submit"]:hover,
 button[type="reset"]:hover {
   background-color: #3949ab;
@@ -424,7 +424,7 @@ button[type="reset"]:hover {
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+  
 .profile-form-container h1 {
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -443,7 +443,7 @@ button[type="reset"]:hover {
 .profile-form .form-group {
   margin-bottom: 1.2rem;
 }
-
+ 
 .profile-form input[type="file"] {
   border: 1px solid #ced4da;
   padding: 0.6rem 0.8rem;
@@ -451,7 +451,7 @@ button[type="reset"]:hover {
   width: 100%;
   box-sizing: border-box;
 }
-
+  
 .profile-form button[type="submit"] {
   width: 100%;
   background-color: #4a69ef;
@@ -468,7 +468,7 @@ button[type="reset"]:hover {
 .profile-form button[type="submit"]:hover {
   background-color: #3949ab;
 }
-
+   
 .profile-form .errorlist {
   color: #dc3545;
   margin-top: 0.25rem;
@@ -481,8 +481,9 @@ input[type="file"] {
   display: none; /* Ховаємо стандартний input */
 }
 
+/* Стилізуємо кнопку для завантаження файлу */
 .custom-file-upload {
-  display: inline-block;
+  display: inline-block; 
   padding: 0.6rem 1.2rem;
   cursor: pointer;
   border-radius: 12px;
@@ -498,7 +499,7 @@ input[type="file"] {
   background-color: #3949ab;
 }
 
-
+/* Стилізуємо label як кнопку для завантаження файлу */
 label.custom-file-upload { 
 display: inline-block; 
 padding: 0.6rem 1.2rem; 

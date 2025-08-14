@@ -5,32 +5,42 @@ from django.contrib.auth.models import User
 from .models import Profile
 
 
+# форма регістрації 
 class RegisterForm(UserCreationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={"required": True}))
+    username = forms.CharField(widget=forms.TextInput(attrs={"required": True}))  
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={"required": True}))
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={"required": True}))
 
+    # для валідації
     class Meta:
-        model = User
-        fields = ["username", "password1", "password2"]
+        model = User # модель користувача
+        fields = ["username", "password1", "password2"] # поля для реєстрації
 
 
+# форма авторизації
 class LoginForm(AuthenticationForm):
+    
+    # поля для авторизації
     class Meta:
-        model = User
+        model = User # модель користувача
         fields = ["username", "password"]
 
 
-# Аватар
+# форма для редагування профілю користувача
 class ProfileForm(forms.ModelForm):
+    
+    # поле для аватарки
     class Meta:
-        model = Profile
-        fields = ["avatar"]
-
+        model = Profile  # модель профілю
+        fields = ["avatar"] # поля для редагування профілю   
+ 
+    # валідація аватарки
     def clean_avatar(self):
-        avatar = self.cleaned_data.get("avatar")
-        if avatar:
-            max_size = 5 * 1024 * 1024  # 5 Мб
-            if avatar.size > max_size:
+        avatar = self.cleaned_data.get("avatar") # отримуємо аватарку з даних форми
+        if avatar: # якщо аватарка не порожня
+            # перевіряємо розмір файлу аватарки
+            max_size = 5 * 1024 * 1024  # 5 Мб  
+            # якщо розмір аватарки більший за максимальний розмір
+            if avatar.size > max_size:   
                 raise ValidationError("Image file too large ( > 5MB )")
         return avatar

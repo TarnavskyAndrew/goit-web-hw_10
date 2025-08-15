@@ -59,10 +59,15 @@ GOIT-WEB-HW_10/
 
 ## Setup & Run
 
-### 1. Clone the project
+### 0. Clone the project
 ```bash
 git clone <your_repo_url>
 cd GOIT-WEB-HW_10
+```
+
+### 1. Start PostgreSQL container
+```bash
+docker run --name noteapp-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
 ```
 
 ### 2. Install dependencies (via Poetry)
